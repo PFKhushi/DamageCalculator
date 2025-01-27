@@ -1,0 +1,47 @@
+﻿<Window x:Class="DamageCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DamageCalculator"
+        mc:Ignorable="d"
+        Title="Sword Damage" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" 
+                  Content="Flamming"
+                  FontSize="13px"
+                  Checked="IsFlaming"
+                  Unchecked="IsFlaming">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"/>
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" 
+                  Content="Magic"
+                  FontSize="14px"
+                  Grid.Column="1"
+                  Checked="IsMagic"
+                  Unchecked="IsMagic">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"/>
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <Button Grid.Row="1" Grid.ColumnSpan="2" 
+                Width="500" Height="75" 
+                Content="Roll Damage" FontSize="40"
+                Click="RollDamage"/>
+        <TextBlock x:Name="Damage" Grid.Row="2" Grid.ColumnSpan="2" 
+                   FontSize="75"  
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+    </Grid>
+</Window>
