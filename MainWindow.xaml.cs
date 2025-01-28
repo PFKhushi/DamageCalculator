@@ -32,11 +32,11 @@ namespace DamageCalculator
             CheckBox cb = sender as CheckBox;
             if (cb.IsChecked == true) 
             {
-                swordDamage.SetFlame(true);
+                swordDamage.IsFlaming = true;
             }
             else
             {
-                swordDamage.SetFlame(false);
+                swordDamage.IsFlaming = false;
             }
             Update();
             
@@ -47,22 +47,28 @@ namespace DamageCalculator
 
             if (cb.IsChecked == true)
             {
-                swordDamage.SetMagic(true);
+                swordDamage.IsMagic = true;
             }
             else
             {
-                swordDamage.SetMagic(false);
+                swordDamage.IsMagic = false;
             }
             Update();
         }
         public void Update() 
         {
+            swordDamage.Damage = 0;
             Damage.Text = "You rolled " + swordDamage.Roll.ToString() + " for " + swordDamage.Damage.ToString() + "/dmg";
+            Console.WriteLine(
+                $"\nRoll { swordDamage.Roll }" +
+                $"\nDamage {swordDamage.Damage}" +
+                $"\nIs Magic Bichin {swordDamage.IsMagic}" +
+                $"\nIs FlamingMulti {swordDamage.IsFlaming}");
         }
 
         private void RollDamage(object sender, RoutedEventArgs e)
         {
-            swordDamage.SetRoll();
+            swordDamage.Roll = 0;
             Update();
         }
     }
