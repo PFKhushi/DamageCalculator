@@ -20,11 +20,22 @@ namespace DamageCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        SwordDamage swordDamage;
+        WeaponDamage weaponDamage;
+
+        Axe axe;
+        Sword sword;
+        Bow bow;
         public MainWindow()
-        {   
-            swordDamage = new SwordDamage();
+        {
+            weaponDamage = new  WeaponDamage();
+            sword = new Sword();
+            bow = new Bow();
+            axe = new Axe();
             InitializeComponent();
+            bow.Tester();
+            axe.Tester();
+            sword.Tester();
+
             
         }
         private void IsFlaming(object sender, RoutedEventArgs e)
@@ -32,11 +43,11 @@ namespace DamageCalculator
             CheckBox cb = sender as CheckBox;
             if (cb.IsChecked == true) 
             {
-                swordDamage.IsFlaming = true;
+                weaponDamage.IsFlaming = true;
             }
             else
             {
-                swordDamage.IsFlaming = false;
+                weaponDamage.IsFlaming = false;
             }
             Update();
             
@@ -47,29 +58,39 @@ namespace DamageCalculator
 
             if (cb.IsChecked == true)
             {
-                swordDamage.IsMagic = true;
+                weaponDamage.IsMagic = true;
             }
             else
             {
-                swordDamage.IsMagic = false;
+                weaponDamage.IsMagic = false;
             }
             Update();
         }
         public void Update() 
         {
-            swordDamage.Damage = 0;
-            Damage.Text = "You rolled " + swordDamage.Roll.ToString() + " for " + swordDamage.Damage.ToString() + "/dmg";
+            weaponDamage.Damage = 0;
+            Damage.Text = "You rolled " + weaponDamage.Roll.ToString() + " for " + weaponDamage.Damage.ToString() + "/dmg";
             Console.WriteLine(
-                $"\nRoll { swordDamage.Roll }" +
-                $"\nDamage {swordDamage.Damage}" +
-                $"\nIs Magic Bichin {swordDamage.IsMagic}" +
-                $"\nIs FlamingMulti {swordDamage.IsFlaming}");
+                $"\nRoll {weaponDamage.Roll }" +
+                $"\nDamage {weaponDamage.Damage}" +
+                $"\nIs Magic Bichin {weaponDamage.IsMagic}" +
+                $"\nIs FlamingMulti {weaponDamage.IsFlaming}");
         }
 
         private void RollDamage(object sender, RoutedEventArgs e)
         {
-            swordDamage.Roll = 0;
+            weaponDamage.Roll = 0;
             Update();
+        }
+
+        private void Selesctesd(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine(1);
+        }
+
+        private void ChosenWeapon(object sender, SelectionChangedEventArgs e)
+        {
+            Console.WriteLine(1);
         }
     }
 }

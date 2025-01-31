@@ -55,7 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SwordDamage.cs" />
+    <Compile Include="Bow.cs" />
+    <Compile Include="Axe.cs" />
+    <Compile Include="Sword.cs" />
+    <Compile Include="WeaponDamage.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +97,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="nilliard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sprites\Axe.png" />
+    <Resource Include="sprites\Bow.png" />
+    <Resource Include="sprites\Flame.png" />
+    <Resource Include="sprites\Magic.png" />
+    <Resource Include="sprites\Sword.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

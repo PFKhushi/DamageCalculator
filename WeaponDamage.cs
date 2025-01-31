@@ -7,16 +7,16 @@ using System.Windows.Media;
 
 namespace DamageCalculator
 {
-    internal class SwordDamage
+    internal class  WeaponDamage
     {
-        private const int _BASE_DAMAGE = 3;
-        private const int _FLAME_DAMAGE = 2;
-        private int _Roll = 0;
-        private int _FlamingDamage = 0;
-        private int _Damage = 0;
-        private decimal _MagicMultiplier = 1M;
-        private bool _IsMagic = false;
-        private bool _IsFlaming = false;
+        protected const int _BASE_DAMAGE = 3;
+        protected const int _FLAME_DAMAGE = 2;
+        protected int _Roll = 0;
+        protected int _FlamingDamage = 0;
+        protected int _Damage = 0;
+        protected decimal _MagicMultiplier = 1M;
+        protected bool _IsMagic = false;
+        protected bool _IsFlaming = false;
         
         static Random rand = new Random();
 
@@ -25,7 +25,7 @@ namespace DamageCalculator
         /// Ex: "Roll = 0;" will trigger the setter and "int temp = Roll;"
         /// will return the last roll or generate the first roll
         /// </summary>
-        public int Roll
+        public virtual int Roll
         { 
             get => _Roll == 0? _Roll = Enumerable.Range(0, 3).Sum(i => rand.Next(1,6)):_Roll; 
             set { _Roll = Enumerable.Range(0, 3).Sum(i => rand.Next(1, 6)); }
@@ -34,14 +34,14 @@ namespace DamageCalculator
         /// Returns the value of assigned to the magic multiplier
         /// based on the IsMagic checker
         /// </summary>
-        private decimal MagicMultiplier 
+        private decimal MagicMultiplier //Returns the value assigned to _MagicMultiplier
             => _IsMagic ? _MagicMultiplier = 1.75M : _MagicMultiplier = 1M;
         /// <summary>
         /// Returns the value of assigned to the flaming multiplier
         /// based on the IsMagic checker
         /// </summary>
-        private int FlamingDamage 
-            => _IsFlaming ? _FlamingDamage = _FLAME_DAMAGE : _FlamingDamage = 0;
+        private int FlamingDamage //Returns the value assigned to _FlamingDamage
+            => _IsFlaming ? _FlamingDamage = _FLAME_DAMAGE : _FlamingDamage = 0; 
         /// <summary>
         /// Calculates the damage based on the values assigned
         /// to flame and magic buff checkers
@@ -66,6 +66,6 @@ namespace DamageCalculator
         {
             get { return _IsFlaming; }
             set { _IsFlaming = value; }
-        }    
+        }
     }
 }
