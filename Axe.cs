@@ -8,20 +8,11 @@ namespace DamageCalculator
 {
     internal class Axe :  WeaponDamage
     {
-        new private const int _BASE_DAMAGE = 10;
-        public string str = "AXE";
-        public void Tester()
+        public Axe() 
         {
-            Console.WriteLine(
-                $"\n\nName: {str}\n" +
-                $"Base Damage: {_BASE_DAMAGE}\n" +
-                $"Flaming Damage: {_FLAME_DAMAGE}\n" +
-                $"Roll: {Roll}\n" +
-                $"Damage: {_Damage}\n" +
-                $"Magic Damage: {_MagicMultiplier}\n" +
-                $"Is Magic? {_IsMagic}\n" +
-                $"Is Flaming? {_IsFlaming}");
+            Rolls = 2;
+            Dice = 9;
         }
-
+        new private const int _BASE_DAMAGE = 10;
     }
 }

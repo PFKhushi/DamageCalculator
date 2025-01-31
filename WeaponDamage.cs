@@ -12,6 +12,8 @@ namespace DamageCalculator
         protected const int _BASE_DAMAGE = 3;
         protected const int _FLAME_DAMAGE = 2;
         protected int _Roll = 0;
+        protected int _Rolls = 0;
+        protected int _Dice = 6;
         protected int _FlamingDamage = 0;
         protected int _Damage = 0;
         protected decimal _MagicMultiplier = 1M;
@@ -25,22 +27,39 @@ namespace DamageCalculator
         /// Ex: "Roll = 0;" will trigger the setter and "int temp = Roll;"
         /// will return the last roll or generate the first roll
         /// </summary>
-        public virtual int Roll
+        public int Roll
         { 
-            get => _Roll == 0? _Roll = Enumerable.Range(0, 3).Sum(i => rand.Next(1,6)):_Roll; 
-            set { _Roll = Enumerable.Range(0, 3).Sum(i => rand.Next(1, 6)); }
+            get => _Roll == 0? _Roll = Enumerable.Range(0, Rolls).Sum(i => rand.Next(1,6)):_Roll; 
+            set { _Roll = Enumerable.Range(0, Rolls).Sum(i => rand.Next(1, 6)); }
+        }
+        /// <summary>
+        /// Gets and sets the number of dice rolls
+        /// </summary>
+        public int Rolls 
+        {
+            get => _Rolls;
+            set { _Rolls = value; }
+
+        }
+        /// <summary>
+        /// Gets and sets the number of sides on the dice
+        /// </summary>
+        public int Dice 
+        {
+            get => _Dice;
+            set { _Dice = value; }
         }
         /// <summary>
         /// Returns the value of assigned to the magic multiplier
         /// based on the IsMagic checker
         /// </summary>
-        private decimal MagicMultiplier //Returns the value assigned to _MagicMultiplier
+        protected decimal MagicMultiplier //Returns the value assigned to _MagicMultiplier
             => _IsMagic ? _MagicMultiplier = 1.75M : _MagicMultiplier = 1M;
         /// <summary>
         /// Returns the value of assigned to the flaming multiplier
         /// based on the IsMagic checker
         /// </summary>
-        private int FlamingDamage //Returns the value assigned to _FlamingDamage
+        protected int FlamingDamage //Returns the value assigned to _FlamingDamage
             => _IsFlaming ? _FlamingDamage = _FLAME_DAMAGE : _FlamingDamage = 0; 
         /// <summary>
         /// Calculates the damage based on the values assigned
